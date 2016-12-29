@@ -71,8 +71,11 @@ my %plt=parse_league_table(cwd . $cfg->param('files.premier_league_table_file'))
 my %clt=parse_league_table(cwd . $cfg->param('files.championship_table_file'));
 my %l1t=parse_league_table(cwd . $cfg->param('files.league_one_table_file'));
 my %l2t=parse_league_table(cwd . $cfg->param('files.league_two_table_file'));
-my %all_tables=(%plt, %clt, %l1t, %l2t);
-insert_positions(\%plt,%all_tables);
+#my %all_tables=(%plt, %clt, %l1t, %l2t);
+insert_positions(\%plt,'Premier League');
+insert_positions(\%clt,'Championship');
+insert_positions(\%l1t,'League 1');
+insert_positions(\%l2t,'League 2');
 
 IUP->Message("Data Parsed","Parsing completed.");
 }
