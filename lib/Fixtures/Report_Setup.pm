@@ -119,13 +119,14 @@ $list_competition[$i] = IUP::List->new(
             %competitions,
             DROPDOWN=>'YES',
             SORT=>'NO',
-            SIZE =>220, 
+            VALUE=>0,
+            #SIZE =>200, 
             );
 
 $list_date[$i] = IUP::List->new( 
             %dates,
             DROPDOWN=>'YES', 
-            SIZE =>160, 
+            #SIZE =>160, 
             );
 
 }
@@ -146,12 +147,11 @@ my $cancel_btn=IUP::Button->new(
 
 
 $dlg2 = IUP::Dialog->new( TITLE=>"Report Details",
-                            SIZE => "710x260",
+            #                SIZE => "710x260",
                             MARGIN=>"10x10",
                             child =>
                                     $vbox,
                             );
-$dlg2->Show();
 
 $vbox->SetAttribute(NMARGIN=>"10x50");
 
@@ -216,6 +216,8 @@ $hbox_buttons->Append($ok_btn);
 $ok_btn->Map;
 $hbox_buttons->Append($cancel_btn);
 $cancel_btn->Map;
+#$dlg2->Show();
+$dlg2->ShowXY(10,10);
 
 }
 
