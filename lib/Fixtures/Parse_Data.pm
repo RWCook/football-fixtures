@@ -57,10 +57,27 @@ for my $fixtures (@fixtures) {
 return $record;
 }
 
+sub check_files_exist {
+my $files_exist=1;
+my @files=qw(premier_league_table_file championship_table_file 
+league_one_table_file league_two_table_file fixtures_file);
 
+foreach my $file (@files) {
+    if (!-e (cwd . $cfg->param("files." . $file)) ) {
+    $files_exist=0;
+    }
+}
+return $files_exist;
+}
 
 
 sub parse_data {
+my $files_exist=check_files_exist;
+if ($files_exist==0) {
+    IUP->Message("Error - No Data","Please get data before trying to parse it.");
+    return;
+}
+
 drop_fixtures;
 drop_positions;
 create_fixtures;
