@@ -33,7 +33,12 @@ for my $i(0..$#report_params) {
     
     }
 
+    if (defined($cfg->param("pdf.viewer"))==0) {
+    system( cwd . "/fixtures.pdf");
+    }
+    else {
     system($cfg->param("pdf.viewer") . " " . cwd . "/fixtures.pdf");
+    }
 
 }
 
