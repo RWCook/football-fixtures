@@ -23,9 +23,10 @@ $vbox->Map;
 
 #Get Data Make Report Preview Report Exit
 my @buttons;
-push(@buttons,{title=>'Get Data',action=>\&Get_Data::get_data});
-push(@buttons,{title=>'Parse Data',action=>\&Parse_Data::parse_data});
-push(@buttons,{title=>'Make Report',action=>\&Report_Setup::report_setup});
+push(@buttons,{title=>'Get Data',action=> sub { Get_Data::get_data($main_dialog);} });
+#push(@buttons,{title=>'Parse Data',action=>\&Parse_Data::parse_data});
+push(@buttons,{title=>'Parse Data',action=> sub {Parse_Data::parse_data($main_dialog);} });
+push(@buttons,{title=>'Make Report',action=> sub {Report_Setup::report_setup($main_dialog);} });
 push(@buttons,{title=>'Exit',action=>\&cb_exit});
 
 my @but;

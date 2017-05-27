@@ -72,6 +72,7 @@ return $files_exist;
 
 
 sub parse_data {
+my $parent_dialog=shift;
 my $files_exist=check_files_exist;
 if ($files_exist==0) {
     IUP->Message("Error - No Data","Please get data before trying to parse it.");
@@ -94,7 +95,16 @@ insert_positions(\%clt,'Championship');
 insert_positions(\%l1t,'League 1');
 insert_positions(\%l2t,'League 2');
 
-IUP->Message("Data Parsed","Parsing completed.");
+
+my $messagedlg = IUP::MessageDlg->new( BUTTONS=>"OK",
+                        PARENTDIALOG => $parent_dialog,
+                        TITLE => "Data Parsed",
+                        VALUE=>"Parsing completed.");
+
+
+
+$messagedlg->Popup();
+
 }
 
 

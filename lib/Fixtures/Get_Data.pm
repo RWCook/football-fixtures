@@ -8,6 +8,7 @@ use Config::Simple;
 use Carp;
 
 sub get_data {
+my $parent_dialog=shift;
 my $cfg=Config::Simple->new(cwd . "/football_fixtures.cfg");
 
 delete_file(cwd . $cfg->param("files.fixtures_file"));
@@ -22,7 +23,18 @@ get_html_file($cfg->param("files.championship_table"),cwd . $cfg->param("files.c
 get_html_file($cfg->param("files.league_one_table"),cwd . $cfg->param("files.league_one_table_file"));
 get_html_file($cfg->param("files.league_two_table"),cwd . $cfg->param("files.league_two_table_file"));
 
-IUP->Message("Data Received","Data received from BBC site.");
+#IUP->Message("Data Received","Data received from BBC site.");
+
+my $messagedlg = IUP::MessageDlg->new( BUTTONS=>"OK",
+                        PARENTDIALOG => $parent_dialog,
+                        TITLE => "Data Received",
+                        VALUE=>"Data received from BBC site." );
+
+
+
+$messagedlg->Popup();
+
+
 }
 
 sub delete_file {

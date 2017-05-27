@@ -13,10 +13,19 @@ use Cwd qw(cwd);
 my $cfg=Config::Simple->new(cwd . "/football_fixtures.cfg");
 
 sub report_setup {
+my $parent_dialog=shift;
 my $number_of_tables=select_table_count();
 if ($number_of_tables==0) {
-    IUP->Message("Error - No Data","Please parse data before making a report.");
-    return;
+
+my $messagedlg = IUP::MessageDlg->new( BUTTONS=>"OK",
+                        PARENTDIALOG => $parent_dialog,
+                        TITLE => "Error - No Data",
+                        VALUE=>"No data. Please parse data before making a report." );
+
+
+
+$messagedlg->Popup();
+return;
 }
 
 
